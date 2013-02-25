@@ -90,10 +90,8 @@
 			this.running = 1;
 			// console.log('### starting');
 			this.animint = setInterval($.proxy(function() {
-				var exit = this.running >= 100; // fail ???
-
-				if (this.running > 1 && this.currOffset == this.viewOffset || exit) {
-					// console.log('### stopping ' + this.animint + ' ' + this.running + ' ' + exit);
+				if (this.running > 1 && this.currOffset == this.viewOffset) {
+					// console.log('### stopping ' + this.animint + ' ' + this.running);
 					clearInterval(this.animint);
 					delete this.animint;
 					delete this.running;
@@ -130,9 +128,9 @@
 	});
 
 	$.fn.scroller = function(options) {
-		var config = $.extend({}, options);
-		$.extend(config, { root: this });
-		return new Scroller(config);
+		options = $.extend({}, options);
+		$.extend(options, {root: this});
+		return new Scroller(options);
 	};
 
 })(jQuery);
