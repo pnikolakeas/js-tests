@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>slider demo</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.js"></script>
+		<script type="text/javascript" src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+		<script type="text/javascript" src="object.js"></script>
+		<script type="text/javascript" src="tilescroll.js"></script>
+		<style type="text/css">
+			#scroller {
+				width: 500px;
+				height: 75px;
+				overflow: hidden;
+			}
+
+			body {
+				background-color: gray;
+			}
+
+			#scroller {
+				margin: 0 auto;
+				border: 3px solid orange;
+			}
+
+			#scroller .tile {
+				background-color: lightgray;
+			}
+
+			#handle {
+				width: 300px;
+				margin: 20px auto;
+			}
+
+			#handle .ui-slider-handle {
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="scroller"></div>
+		<div id="handle"></div>
+		<script>
+			$(function() {
+				var scroller = $("#scroller").scroller({
+					contents: [
+						"http://farm1.static.flickr.com/143/321464099_a7cfcb95cf_t.jpg",
+						"http://farm4.static.flickr.com/3089/2796719087_c3ee89a730_t.jpg",
+						"http://farm1.static.flickr.com/79/244441862_08ec9b6b49_t.jpg",
+						"http://farm1.static.flickr.com/163/399223609_db47d35b7c_t.jpg",
+						"http://farm1.static.flickr.com/135/321464104_c010dbf34c_t.jpg",
+						"http://farm1.static.flickr.com/153/399232237_6928a527c1_t.jpg",
+						"http://farm4.static.flickr.com/3629/3323896446_3b87a8bf75_t.jpg",
+						"http://farm4.static.flickr.com/3023/3323897466_e61624f6de_t.jpg",
+						"http://farm4.static.flickr.com/3650/3323058611_d35c894fab_t.jpg",
+						"http://farm4.static.flickr.com/3635/3323893254_3183671257_t.jpg",
+						"http://farm4.static.flickr.com/3624/3323893148_8318838fbd_t.jpg"
+					]
+				});
+				$("#handle").slider({
+					slide: function(ev, ui) {
+						var value  = ui.value / 100;
+						scroller.seekTo(value);
+					}
+				});
+			});
+		</script>
+	</body>
+</html>
